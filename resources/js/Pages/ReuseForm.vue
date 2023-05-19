@@ -2,12 +2,13 @@
 
 import { ref } from "vue";
 import Button from '../Components/Button.vue'
-import { ArrowPathIcon } from "@heroicons/vue/20/solid";
+import { ArrowPathIcon, EyeIcon, EyeSlashIcon } from "@heroicons/vue/20/solid";
 import BaseInput from '../Components/BaseInput.vue'
 import BaseCheckbox from '../Components/BaseCheckbox.vue'
 import BaseRadioGroup from '../Components/Radio/BaseRadioGroup.vue'
 import BaseTextarea from '../Components/BaseTextarea.vue'
 import BaseHelpbox from '../Components/BaseHelpbox.vue'
+import BaseToggle from '../Components/BaseToggle.vue'
 
 
 const form = ref({
@@ -21,6 +22,7 @@ const form = ref({
     role: 0,
     sampleDisableRadiobox: 0,
     comment: null,
+    basicToggle: false
 })
 
 const roles = [
@@ -134,10 +136,10 @@ const disable = [
                 <div>
                     <BaseCheckbox 
                         v-model="form.sampleErrorCheckbox"
-                        label="มีข้อผิดพลาด"
+                        label="กรุณากดยอมรับ"
                         id="cb-error"
                         intent="error"
-                        error="You should accept the terms."
+                        error="เลือกข้อนี้คำเตือนจะหายไป"
                     />
                 </div>
 
@@ -185,6 +187,88 @@ const disable = [
                     disabled
                 />
             </div>
+
+            <div class="border p-2 space-y-2">
+                <h2 class="font-semibold underline mb-2">Base Toggle Component</h2>
+                <h3 class="mt-2 font-semibold">Basic Toggle</h3>
+                <BaseToggle
+                    class="w-16"
+                    v-model="form.basicToggle"
+                    intent="info"
+                >
+                    <template v-slot:offMessage>
+                        ปิด
+                    </template>
+                    <template v-slot:onMessage>
+                        เปิด
+                    </template>
+                </BaseToggle>
+
+                <BaseToggle
+                    class="w-16"
+                    v-model="form.basicToggle"
+                    shape="square"
+                >
+                    <template v-slot:offMessage>
+                        OFF
+                    </template>
+                    <template v-slot:onMessage>
+                        ON
+                    </template>
+                </BaseToggle>
+
+                <BaseToggle
+                    class="w-20"
+                    v-model="form.basicToggle"
+                    size="base"
+                    intent="warning"
+                >
+                    <template v-slot:offMessage>
+                        <EyeSlashIcon class="w-5 h-5"/>
+                    </template>
+                    <template v-slot:onMessage>
+                        <EyeIcon class="w-5 h-5"/>
+                    </template>
+                </BaseToggle>
+
+                <BaseToggle
+                    class="w-20"
+                    v-model="form.basicToggle"
+                    shape="square"
+                    size="base"
+                >
+                    <template v-slot:offMessage>
+                        Close
+                    </template>
+                    <template v-slot:onMessage>
+                        Open
+                    </template>
+                </BaseToggle>
+
+                <BaseToggle
+                    class="w-24"
+                    v-model="form.basicToggle"
+                    size="lg"
+                    intent="danger"
+                    :disabled="false"
+                >
+                    <template v-slot:offMessage>
+                        Close
+                    </template>
+                    <template v-slot:onMessage>
+                        Open
+                    </template>
+                </BaseToggle>
+
+                <BaseToggle
+                    class="w-24"
+                    v-model="form.basicToggle"
+                    shape="square"
+                    size="lg"
+                    :disabled="true"
+                />
+            </div>
+            
 
             <div class="border p-2">
                 <h2 class="font-semibold underline mb-2">Base Textarea Component</h2>
