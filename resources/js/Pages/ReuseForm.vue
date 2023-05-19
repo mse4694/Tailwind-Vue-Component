@@ -20,6 +20,8 @@ const form = ref({
     sampleSuccessCheckbox: true,
     sampleErrorCheckbox: true,
     role: 0,
+    sampleInlineRadiobox: 0,
+    sampleHorizontalRadiobox: 0,
     sampleDisableRadiobox: 0,
     comment: null,
     basicToggle: false
@@ -29,6 +31,18 @@ const roles = [
     { value: 1, label: 'Marketing' },
     { value: 2, label: 'Helpdesk' },
     { value: 3, label: 'Support' },
+]
+
+const inlines = [
+    { value: 1, label: 'Marketing-i' },
+    { value: 2, label: 'Helpdesk-i' },
+    { value: 3, label: 'Support-i' },
+]
+
+const horizontals = [
+    { value: 1, label: 'Marketing-h' },
+    { value: 2, label: 'Helpdesk-h' },
+    { value: 3, label: 'Support-h' },
 ]
 
 const disable = [
@@ -178,12 +192,29 @@ const disable = [
                     name="option"
                 />
 
+                <h3 class="mt-2 font-semibold">Inline Radio</h3>
+                <BaseRadioGroup
+                    v-model="form.sampleInlineRadiobox"
+                    :options="inlines"
+                    name="inline"
+                    radio-type="inline"
+                />
+
+                <h3 class="mt-2 font-semibold">Horizontal Radio</h3>
+                <BaseRadioGroup
+                    v-model="form.sampleHorizontalRadiobox"
+                    :options="horizontals"
+                    name="horizontal"
+                    radio-type="horizontal"
+                />
+
                 <h3 class="mt-2 font-semibold">Disable Radio with error</h3>
                 <BaseRadioGroup
                     v-model="form.sampleDisableRadiobox"
                     :options="disable"
                     name="disable"
                     error="You can't choose me."
+                    errorIcon="true"
                     disabled
                 />
             </div>

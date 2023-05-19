@@ -13,7 +13,8 @@ const props = defineProps({
         type: [String, Number],
         required: true,
     },
-    radioBoxClass: String
+    radioBoxClass: String,
+    radioType: String,
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -35,7 +36,8 @@ const updateInput = ($event) => {
     />
     <label
         :for="$attrs.id" 
-        class="ml-2 text-sm font-medium text-gray-900"
+        class="w-full ml-2 text-sm font-medium text-gray-900"
+        :class="{ 'py-3' : props.radioType === 'horizontal'}"
     >
             {{ label }}
     </label>
