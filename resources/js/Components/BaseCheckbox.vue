@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from "vue";
 import { cva } from "class-variance-authority";
-import FormError from '../Components/FormError.vue'
+import FormError from './ErrorMessage.vue'
 
 const props = defineProps({
     label: {

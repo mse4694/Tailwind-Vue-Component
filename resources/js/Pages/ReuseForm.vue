@@ -3,18 +3,21 @@
 import { ref } from "vue";
 import Button from '../Components/Button.vue'
 import { ArrowPathIcon, EyeIcon, EyeSlashIcon } from "@heroicons/vue/20/solid";
+import BaseLabel from '../Components/BaseLabel.vue'
+import ErrorMessage from '../Components/ErrorMessage.vue'
+import Field from '../Components/Field.vue'
 import BaseInput from '../Components/BaseInput.vue'
 import BaseCheckbox from '../Components/BaseCheckbox.vue'
 import BaseRadioGroup from '../Components/Radio/BaseRadioGroup.vue'
 import BaseTextarea from '../Components/BaseTextarea.vue'
-import BaseHelpbox from '../Components/BaseHelpbox.vue'
+import HelperMessage from '../Components/HelperMessage.vue'
 import BaseToggle from '../Components/BaseToggle.vue'
 
 
 const form = ref({
+    name: null,
+    lastname: null,
     title: null,
-    description: null,
-    location: null,
     password: null,
     leader: false,
     sampleSuccessCheckbox: true,
@@ -51,89 +54,105 @@ const disable = [
     { value: 3, label: 'd3' },
 ]
 
+const errors = ref({
+    name: '',
+    lastname: '',
+    empty: '',
+    error: 'This is form error message.',
+    password: 'Password error because ...'   
+})
+
 </script>
 
 <template>
     <div class="m-5 space-y-5">
         <div class="flex flex-col space-y-5">
             <div class="border p-2 space-y-2">
-                <h2 class="font-semibold underline mb-2">Base Input Component</h2>
-                <div>
-                    <BaseInput 
-                        label="Warning"
-                        type="text"
-                        id="warning"
-                        intent="warning"
-                    />
-                </div>
-
-                <div>
-                    <BaseInput 
-                        label="Error"
-                        type="text"
-                        id="error"
-                        intent="error"
-                        error="This is form error message."
-                    />
-                </div>
-
-                <div>
-                    <BaseInput 
-                        label="Success"
-                        type="text"
-                        id="success"
-                        intent="success"
-                    />
-                </div>
-
-                <div>
-                    <BaseInput 
-                        label="Disable"
-                        type="text"
-                        id="disable"
-                        disabled
-                    />
-                </div>
-
-                <div>
+                <h2 class="font-semibold underline mb-2">Field Component</h2>
+                
+                <Field
+                    label="คำนำหน้า"
+                    required
+                    :error="errors.empty"
+                    help="ใส่คำนำหน้า นาย นาง หรือ นางสาว"
+                >
                     <BaseInput 
                         v-model="form.title"
-                        label="Title"
                         type="text"
-                        id="title"
                     />
-                    <BaseHelpbox class="mt-1">
-                        This is a help block!
-                    </BaseHelpbox>
-                </div>
+                </Field>
 
-                <div>
+                <Field
+                    label="ชื่อ"
+                    required
+                    :error="errors.name"
+                    help="ใส่ชื่อแรกของตนเอง"
+                >
                     <BaseInput 
-                        v-model="form.description"
-                        label="Description"
+                        v-model="form.name"
                         type="text"
-                        id="description"
+                        placeholder="ชื่อ"
                     />
-                </div>
+                </Field>
+              
+                <Field
+                    label="นามสกุล"
+                    required    
+                >
+                    <BaseInput
+                        v-model="form.lastname"
+                        intent="warning" 
+                        type="text"
+                        placeholder="ใส่นามสกุล ทดสอบ intent warning"
+                    />
+                </Field>
 
-                <div>
-                    <BaseInput 
-                        v-model="form.location"
-                        placeholder="สถานที่"
-                        label="Location"
+                <Field
+                    label="Error"
+                    required 
+                    :error="errors.error"   
+                >
+                    <BaseInput
                         type="text"
-                        id="place"
+                        placeholder="ทดสอบ Field"
                     />
-                </div>
-                
-                <div>
-                    <BaseInput 
+                </Field>
+              
+                <Field
+                    label="Success"
+                    required 
+                    :error="errors.empty"   
+                >
+                    <BaseInput
+                        intent="success" 
+                        type="text"
+                        placeholder="ทดสอบ Field intent success"
+                    />
+                </Field>
+
+                <Field
+                    label="Disable"
+                    :error="errors.empty"   
+                >
+                    <BaseInput
+                        type="text"
+                        placeholder="ทดสอบ disabled"
+                        disabled
+                    />
+                </Field>
+
+                <Field
+                    label="Password"
+                    required 
+                    :error="errors.password"
+                    help="ความยาวอย่างน้อย 8 ตัวอักษร และต้องมี อักระพิเศษ"   
+                >
+                    <BaseInput
                         v-model="form.password"
-                        placeholder="รหัสผ่าน"
                         type="password"
-                        id="password"
                     />
-                </div>
+                </Field>
+                
             </div>
 
             <div class="border p-2">
@@ -303,13 +322,17 @@ const disable = [
 
             <div class="border p-2">
                 <h2 class="font-semibold underline mb-2">Base Textarea Component</h2>
-                <BaseTextarea
-                    v-model="form.comment"
-                    name="comment"
-                    id="comment"
+                <Field
                     label="Comment"
-                    placeholder="ความคิดเห็นเพิ่มเติม"
-                />
+                    required 
+                    :error="errors.empty"
+                    help="ความยาวอย่างน้อย 256 ตัวอักษร"   
+                >
+                    <BaseTextarea
+                        v-model="form.comment"
+                        placeholder="ความคิดเห็นเพิ่มเติม"
+                    />
+                </Field>
             </div>
 
             <div>{{ form }}</div>

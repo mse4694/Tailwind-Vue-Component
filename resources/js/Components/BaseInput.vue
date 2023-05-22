@@ -1,14 +1,13 @@
 <script setup>
-import { computed } from "vue";
+import { computed, inject, onMounted } from "vue";
 import { cva } from "class-variance-authority";
-import BaseLabel from '@/Components/BaseLabel.vue'
-import FormError from '../Components/FormError.vue'
+
+// onMounted(() => {
+//   console.log(`the component is now mounted. ${field.invalid}`)
+// })
 
 const props = defineProps({
-    label: {
-        type: [String, Boolean],
-        default: ''
-    },
+    id: String,
     modelValue: {
         type: [String, Number],
         default: ''
@@ -22,10 +21,12 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
-    error: {
-        type: String,
-        default: '',
+    invalid: {
+        type: Boolean,
+        default: false,
     },
+    ariaDescribedBy: String,
+    required: Boolean
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -33,6 +34,8 @@ const emit = defineEmits(['update:modelValue'])
 const updateInput = ($event) => {
     emit('update:modelValue', $event.target.value)
 }
+
+const field = inject('field', props)
 
 const inputClass = computed(() => {
     return cva(
@@ -47,7 +50,7 @@ const inputClass = computed(() => {
                 },
                 disabled: {
                     true: "!bg-gray-100 !text-gray-400 cursor-not-allowed"
-                }
+                },
             }
         }
     )({
@@ -59,16 +62,13 @@ const inputClass = computed(() => {
 </script>
 
 <template>
-        <BaseLabel :for="$attrs.id">
-            {{ label }}
-        </BaseLabel>
         <input
             v-bind="$attrs"
-            :placeholder="$attrs.placeholder"
+            :id="field.id"
             :value="props.modelValue"
             @input="updateInput" 
-            :class="inputClass"
+            :class="[inputClass, field.invalid ? 'border-red-600 focus:ring-red-500 focus:border-red-500' : '']"
+            :required="field.required"
             :disabled="props.disabled" 
-        >
-        <FormError v-if="props.error">{{ props.error}}</FormError>
+        >   
 </template>
