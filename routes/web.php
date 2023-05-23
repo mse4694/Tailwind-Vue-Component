@@ -79,6 +79,20 @@ Route::get('/form', function () {
     ]);
 })->name('form');
 
+Route::get('/combobox', function () {
+    return Inertia::render('Combobox', [
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+})->name('combobox');
+
+Route::get('/slide-over', function () {
+    return Inertia::render('SidebarSlideOver', [
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+})->name('slide-over');
+
 //ContactsController =>
 Route::controller(ContactsController::class)
     ->group(function () {

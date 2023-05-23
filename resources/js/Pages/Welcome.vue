@@ -72,10 +72,14 @@ defineProps({
                 <ResponsiveNavLink href="listbox">Listbox</ResponsiveNavLink>
                 <ResponsiveNavLink href="avatar">Avatar</ResponsiveNavLink>
                 <ResponsiveNavLink href="dropdown">Dropdown</ResponsiveNavLink>
+                <ResponsiveNavLink href="combobox">Combobox</ResponsiveNavLink>
+            </div>
+            <div class="flex border mt-5">
+                <ResponsiveNavLink href="toast">Toast</ResponsiveNavLink>
                 <ResponsiveNavLink href="paginate">Pagination</ResponsiveNavLink>
                 <ResponsiveNavLink href="contacts">DataTable</ResponsiveNavLink>
-                <ResponsiveNavLink href="toast">Toast</ResponsiveNavLink>
                 <ResponsiveNavLink href="form">Form</ResponsiveNavLink>
+                <ResponsiveNavLink href="slide-over">Sidebar-SlideOver</ResponsiveNavLink>
             </div>
 
             <div class="mt-16">

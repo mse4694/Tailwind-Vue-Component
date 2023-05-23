@@ -59,7 +59,7 @@ const errors = ref({
     lastname: '',
     empty: '',
     error: 'This is form error message.',
-    password: 'Password error because ...'   
+    password: 'Password error because ...'
 })
 
 </script>
@@ -69,14 +69,14 @@ const errors = ref({
         <div class="flex flex-col space-y-5">
             <div class="border p-2 space-y-2">
                 <h2 class="font-semibold underline mb-2">Field Component</h2>
-                
+
                 <Field
                     label="คำนำหน้า"
                     required
                     :error="errors.empty"
                     help="ใส่คำนำหน้า นาย นาง หรือ นางสาว"
                 >
-                    <BaseInput 
+                    <BaseInput
                         v-model="form.title"
                         type="text"
                     />
@@ -88,20 +88,20 @@ const errors = ref({
                     :error="errors.name"
                     help="ใส่ชื่อแรกของตนเอง"
                 >
-                    <BaseInput 
+                    <BaseInput
                         v-model="form.name"
                         type="text"
                         placeholder="ชื่อ"
                     />
                 </Field>
-              
+
                 <Field
                     label="นามสกุล"
-                    required    
+                    required
                 >
                     <BaseInput
                         v-model="form.lastname"
-                        intent="warning" 
+                        intent="warning"
                         type="text"
                         placeholder="ใส่นามสกุล ทดสอบ intent warning"
                     />
@@ -109,22 +109,22 @@ const errors = ref({
 
                 <Field
                     label="Error"
-                    required 
-                    :error="errors.error"   
+                    required
+                    :error="errors.error"
                 >
                     <BaseInput
                         type="text"
                         placeholder="ทดสอบ Field"
                     />
                 </Field>
-              
+
                 <Field
                     label="Success"
-                    required 
-                    :error="errors.empty"   
+                    required
+                    :error="errors.empty"
                 >
                     <BaseInput
-                        intent="success" 
+                        intent="success"
                         type="text"
                         placeholder="ทดสอบ Field intent success"
                     />
@@ -132,7 +132,7 @@ const errors = ref({
 
                 <Field
                     label="Disable"
-                    :error="errors.empty"   
+                    :error="errors.empty"
                 >
                     <BaseInput
                         type="text"
@@ -143,23 +143,23 @@ const errors = ref({
 
                 <Field
                     label="Password"
-                    required 
+                    required
                     :error="errors.password"
-                    help="ความยาวอย่างน้อย 8 ตัวอักษร และต้องมี อักระพิเศษ"   
+                    help="ความยาวอย่างน้อย 8 ตัวอักษร และต้องมี อักระพิเศษ"
                 >
                     <BaseInput
                         v-model="form.password"
                         type="password"
                     />
                 </Field>
-                
+
             </div>
 
             <div class="border p-2">
                 <h2 class="font-semibold underline mb-2">Base Checkbox Component</h2>
 
                 <div>
-                    <BaseCheckbox 
+                    <BaseCheckbox
                         v-model="form.leader"
                         label="ตำแหน่งหัวหน้างาน"
                         id="leader"
@@ -167,7 +167,7 @@ const errors = ref({
                 </div>
 
                 <div>
-                    <BaseCheckbox 
+                    <BaseCheckbox
                         v-model="form.sampleErrorCheckbox"
                         label="กรุณากดยอมรับ"
                         id="cb-error"
@@ -177,7 +177,7 @@ const errors = ref({
                 </div>
 
                 <div>
-                    <BaseCheckbox 
+                    <BaseCheckbox
                         label="มีคำเตือน"
                         id="cb-warning"
                         intent="warning"
@@ -186,7 +186,7 @@ const errors = ref({
 
                 <div>
                     <BaseCheckbox
-                        v-model="form.sampleSuccessCheckbox" 
+                        v-model="form.sampleSuccessCheckbox"
                         label="เรียบร้อย"
                         id="cb-success"
                         intent="success"
@@ -318,15 +318,15 @@ const errors = ref({
                     :disabled="true"
                 />
             </div>
-            
+
 
             <div class="border p-2">
                 <h2 class="font-semibold underline mb-2">Base Textarea Component</h2>
                 <Field
                     label="Comment"
-                    required 
+                    required
                     :error="errors.empty"
-                    help="ความยาวอย่างน้อย 256 ตัวอักษร"   
+                    help="ความความคิดเห็นอย่างน้อย 256 ตัวอักษร"
                 >
                     <BaseTextarea
                         v-model="form.comment"
@@ -336,13 +336,13 @@ const errors = ref({
             </div>
 
             <div>{{ form }}</div>
-            
+
         </div>
-    
+
         <div class="flex">
             <Button
                 as="a"
-                intent="text" 
+                intent="text"
                 :href="route('welcome')"
                 :left-icon="ArrowPathIcon"
                 :right-icon="ArrowPathIcon"
