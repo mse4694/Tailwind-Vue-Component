@@ -15,6 +15,7 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue, Ziggy)
+            .mixin({ methods: { route: window.route } }) // enable route() on template
             .mount(el);
     },
     progress: {

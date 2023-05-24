@@ -1,14 +1,23 @@
+<script>
+import AppLayout from "@/Layouts/AppLayout.vue"
+export default {
+    layout: AppLayout,
+}
+</script>
+
 <script setup>
+import { ref } from "vue";
+import { useForm } from "@inertiajs/vue3";
 import Field from '../Components/Field.vue'
 import Combobox from '../Components/Combobox.vue'
-import Button from '../Components/Button.vue'
-import { ArrowPathIcon } from "@heroicons/vue/20/solid"
-import {ref} from "vue";
+// import Button from '../Components/Button.vue'
+// import { ArrowPathIcon } from "@heroicons/vue/20/solid"
 
-const form = ref({
+const form = useForm({
     singleUser: {},
     multiUser: [],
     createUser: [],
+    userError: {},
 })
 
 const users = [
@@ -104,22 +113,22 @@ const errors = ref({
         >
             <Combobox
                 placeholder="Search user..."
-                v-model="form.user"
+                v-model="form.userError"
                 :options="users"
             />
         </Field>
     </div>
 
-    {{ form }}
+    {{ form.data() }}
 
-    <div class="flex">
-        <Button
-            as="a"
-            intent="text"
-            :href="route('welcome')"
-            :left-icon="ArrowPathIcon"
-            :right-icon="ArrowPathIcon"
-            class="w-full"
-        >Return to Welcome Page</Button>
-    </div>
+<!--    <div class="flex">-->
+<!--        <Button-->
+<!--            as="a"-->
+<!--            intent="text"-->
+<!--            :href="route('index')"-->
+<!--            :left-icon="ArrowPathIcon"-->
+<!--            :right-icon="ArrowPathIcon"-->
+<!--            class="w-full"-->
+<!--        >Return to Welcome Page</Button>-->
+<!--    </div>-->
 </template>

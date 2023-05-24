@@ -1,3 +1,10 @@
+<script>
+import AppLayout from "@/Layouts/AppLayout.vue"
+export default {
+    layout: AppLayout,
+}
+</script>
+
 <script setup>
 import Button from '../Components/Button.vue'
 import { EnvelopeIcon, ArrowPathIcon } from "@heroicons/vue/20/solid"
@@ -30,37 +37,37 @@ import { EnvelopeIcon, ArrowPathIcon } from "@heroicons/vue/20/solid"
         <!-- Left Icon -->
         <div class="flex flex-wrap gap-5">
             <Button
-                intent="primary" 
+                intent="primary"
                 :left-icon="EnvelopeIcon"
             >Primary</Button>
 
             <Button
-                intent="secondary" 
+                intent="secondary"
                 :left-icon="EnvelopeIcon"
             >Secondary</Button>
 
             <Button
-                intent="success" 
+                intent="success"
                 :left-icon="EnvelopeIcon"
             >Success</Button>
 
             <Button
-                intent="info" 
+                intent="info"
                 :left-icon="EnvelopeIcon"
             >Info</Button>
 
             <Button
-                intent="warning" 
+                intent="warning"
                 :left-icon="EnvelopeIcon"
             >Warning</Button>
 
             <Button
-                intent="danger" 
+                intent="danger"
                 :left-icon="EnvelopeIcon"
             >Danger</Button>
 
             <Button
-                intent="text" 
+                intent="text"
                 :left-icon="EnvelopeIcon"
             >Text</Button>
         </div>
@@ -68,42 +75,42 @@ import { EnvelopeIcon, ArrowPathIcon } from "@heroicons/vue/20/solid"
         <!-- Right Icon -->
         <div class="flex flex-wrap gap-5">
             <Button
-                intent="primary" 
+                intent="primary"
                 :right-icon="EnvelopeIcon"
             >Primary</Button>
 
             <Button
-                intent="secondary" 
+                intent="secondary"
                 :right-icon="EnvelopeIcon"
             >Secondary</Button>
 
             <Button
                 intent="success"
-                size="mini" 
+                size="mini"
                 :right-icon="EnvelopeIcon"
             >Success</Button>
 
             <Button
                 intent="info"
-                size="small" 
+                size="small"
                 :right-icon="EnvelopeIcon"
             >Info</Button>
 
             <Button
                 intent="warning"
-                size="medium" 
+                size="medium"
                 :right-icon="EnvelopeIcon"
             >Warning</Button>
 
             <Button
                 intent="danger"
-                size="large"  
+                size="large"
                 :right-icon="EnvelopeIcon"
             >Danger</Button>
 
             <Button
                 intent="text"
-                size="xlarge" 
+                size="xlarge"
                 :right-icon="EnvelopeIcon"
             >Text</Button>
         </div>
@@ -112,57 +119,57 @@ import { EnvelopeIcon, ArrowPathIcon } from "@heroicons/vue/20/solid"
         <div class="flex flex-wrap gap-5">
             <Button
                 disabled
-                intent="primary" 
+                intent="primary"
                 :left-icon="EnvelopeIcon"
             >Primary</Button>
 
             <Button
                 disabled
-                intent="secondary" 
+                intent="secondary"
                 :left-icon="EnvelopeIcon"
             >Secondary</Button>
 
             <Button
                 disabled
-                intent="success" 
+                intent="success"
                 :left-icon="EnvelopeIcon"
             >Success</Button>
 
             <Button
                 disabled
-                intent="info" 
+                intent="info"
                 :left-icon="EnvelopeIcon"
             >Info</Button>
 
             <Button
                 disabled
-                intent="warning" 
+                intent="warning"
                 :left-icon="EnvelopeIcon"
             >Warning</Button>
 
             <Button
                 disabled
-                intent="danger" 
+                intent="danger"
                 :left-icon="EnvelopeIcon"
             >Danger</Button>
 
             <Button
                 disabled
                 intent="text"
-                size="large" 
+                size="large"
                 :left-icon="EnvelopeIcon"
             >Text</Button>
         </div>
 
-        <div class="flex">
-            <Button
-                as="a"
-                intent="text" 
-                :href="route('welcome')"
-                :left-icon="ArrowPathIcon"
-                :right-icon="ArrowPathIcon"
-                class="w-full"
-            >Return to Welcome Page</Button>
-        </div>
+<!--        <div class="flex">-->
+<!--            <Button-->
+<!--                as="a"-->
+<!--                intent="text"-->
+<!--                :href="route('index')"-->
+<!--                :left-icon="ArrowPathIcon"-->
+<!--                :right-icon="ArrowPathIcon"-->
+<!--                class="w-full"-->
+<!--            >Return to Welcome Page</Button>-->
+<!--        </div>-->
     </div>
 </template>

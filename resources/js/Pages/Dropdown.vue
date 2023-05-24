@@ -1,12 +1,19 @@
+<script>
+import AppLayout from "@/Layouts/AppLayout.vue"
+export default {
+    layout: AppLayout,
+}
+</script>
+
 <script setup>
 import { ref } from "vue";
 import Dropdown from '../Components/Dropdown/BaseDropdown.vue';
 import DropdownItemGroup from '../Components/Dropdown/DropdownItemGroup.vue'
 import DropdownItem from '../Components/Dropdown/DropdownItem.vue'
-import Button from '../Components/Button.vue'
 import Alert from '../Components/Alert.vue';
 import Avatar from '../Components/Avatar.vue';
-import { ArrowPathIcon } from "@heroicons/vue/20/solid";
+// import Button from '../Components/Button.vue'
+// import { ArrowPathIcon } from "@heroicons/vue/20/solid";
 
 const showAlert = ref(false)
 function deleteSomething() {
@@ -23,16 +30,16 @@ function deleteSomething() {
         <Dropdown class="m-5" align="left" width="20rem">
             <Avatar
                 shape="circle"
-                size="base" 
-                name="Random Image" 
-                initials="RI" 
+                size="base"
+                name="Random Image"
+                initials="RI"
             />
             <template #items>
                 <DropdownItemGroup>
                     <DropdownItem href="https://www.simedicine.org" target="_blank"> Edit </DropdownItem>
                     <DropdownItem> Duplicate </DropdownItem>
                 </DropdownItemGroup>
-                        
+
                 <DropdownItemGroup label="Actions">
                     <DropdownItem description="Don't worry, you can undo.">
                         Archive
@@ -40,14 +47,14 @@ function deleteSomething() {
                     <DropdownItem> Move </DropdownItem>
                     <DropdownItem> Share </DropdownItem>
                 </DropdownItemGroup>
-            
+
                 <DropdownItemGroup>
                     <DropdownItem as="button" @click="deleteSomething()"> Delete </DropdownItem>
                 </DropdownItemGroup>
             </template>
         </Dropdown>
     </div>
-    
+
     <div class="flex">
         <Dropdown class="m-5" align="left" width="20rem">
             <button class="border p-1 rounded-md bg-slate-400">w-20rem, align left</button>
@@ -56,7 +63,7 @@ function deleteSomething() {
                     <DropdownItem href="https://www.simedicine.org" target="_blank"> Edit </DropdownItem>
                     <DropdownItem> Duplicate </DropdownItem>
                 </DropdownItemGroup>
-                        
+
                 <DropdownItemGroup label="Actions">
                     <DropdownItem description="Don't worry, you can undo.">
                         Archive
@@ -64,7 +71,7 @@ function deleteSomething() {
                     <DropdownItem> Move </DropdownItem>
                     <DropdownItem> Share </DropdownItem>
                 </DropdownItemGroup>
-            
+
                 <DropdownItemGroup>
                     <DropdownItem as="button" @click="deleteSomething()"> Delete </DropdownItem>
                 </DropdownItemGroup>
@@ -80,7 +87,7 @@ function deleteSomething() {
                     <DropdownItem href="https://www.simedicine.org" target="_blank"> Edit </DropdownItem>
                     <DropdownItem> Duplicate </DropdownItem>
                 </DropdownItemGroup>
-                        
+
                 <DropdownItemGroup label="Actions">
                     <DropdownItem description="Don't worry, you can undo.">
                         Archive
@@ -88,7 +95,7 @@ function deleteSomething() {
                     <DropdownItem> Move </DropdownItem>
                     <DropdownItem> Share </DropdownItem>
                 </DropdownItemGroup>
-            
+
                 <DropdownItemGroup>
                     <DropdownItem as="button" @click="deleteSomething()"> Delete </DropdownItem>
                 </DropdownItemGroup>
@@ -96,14 +103,14 @@ function deleteSomething() {
         </Dropdown>
     </div>
 
-    <div class="flex">
-        <Button
-            as="a"
-            intent="text" 
-            :href="route('welcome')"
-            :left-icon="ArrowPathIcon"
-            :right-icon="ArrowPathIcon"
-            class="w-full"
-        >Return to Welcome Page</Button>
-    </div>
+<!--    <div class="flex">-->
+<!--        <Button-->
+<!--            as="a"-->
+<!--            intent="text" -->
+<!--            :href="route('index')"-->
+<!--            :left-icon="ArrowPathIcon"-->
+<!--            :right-icon="ArrowPathIcon"-->
+<!--            class="w-full"-->
+<!--        >Return to Welcome Page</Button>-->
+<!--    </div>-->
 </template>

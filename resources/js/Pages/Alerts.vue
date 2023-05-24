@@ -1,3 +1,10 @@
+<script>
+import AppLayout from "@/Layouts/AppLayout.vue"
+export default {
+    layout: AppLayout,
+}
+</script>
+
 <script setup>
 import { ref } from "vue";
 import Button from '../Components/Button.vue';
@@ -28,19 +35,19 @@ const showDangerAlert = ref(true)
     <div class="flex">
         <Button
             as="a"
-            intent="text" 
+            intent="text"
             :href="route('alerts')"
             :left-icon="ArrowPathIcon"
             :right-icon="ArrowPathIcon"
             class="w-full"
         >Refresh Page</Button>
-        <Button
-            as="a"
-            intent="text" 
-            :href="route('welcome')"
-            :left-icon="ArrowPathIcon"
-            :right-icon="ArrowPathIcon"
-            class="w-full"
-        >Return to Welcome Page</Button>
+<!--        <Button-->
+<!--            as="a"-->
+<!--            intent="text"-->
+<!--            :href="route('index')"-->
+<!--            :left-icon="ArrowPathIcon"-->
+<!--            :right-icon="ArrowPathIcon"-->
+<!--            class="w-full"-->
+<!--        >Return to Welcome Page</Button>-->
     </div>
 </template>

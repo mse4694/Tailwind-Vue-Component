@@ -5,37 +5,32 @@ import DropdownItemGroup from '../Components/Dropdown/DropdownItemGroup.vue'
 import DropdownItem from '../Components/Dropdown/DropdownItem.vue'
 import Avatar from '../Components/Avatar.vue';
 import {Dialog, DialogOverlay, TransitionChild, TransitionRoot} from '@headlessui/vue';
-import {CalendarIcon, ChatBubbleBottomCenterIcon, ClipboardIcon, ClockIcon, HeartIcon, HomeIcon, MagnifyingGlassIcon, QueueListIcon, XMarkIcon} from '@heroicons/vue/20/solid';
+import {MagnifyingGlassIcon, XMarkIcon} from '@heroicons/vue/20/solid';
+import { RectangleGroupIcon, MegaphoneIcon, FlagIcon, HomeModernIcon, ListBulletIcon, PhotoIcon, Bars4Icon, QueueListIcon, ClipboardDocumentIcon, TableCellsIcon, Square3Stack3DIcon } from '@heroicons/vue/24/outline'
 import NavItem from "../Components/NavItem.vue";
 
 const sidebarOpened = ref(false)
-const firstLevel = [
-    {href: 'index', active: false, label: 'Button', children: [], icon: HeartIcon},
-]
 const mainNavigation = [
-    {
-        href: 'index', active: false, label: 'Home', icon: HomeIcon,
+    {href: 'buttons', active: false, label: 'Button', children: [], ability:[], icon: RectangleGroupIcon},
+    {href: 'index', active: false, label: 'Notify', ability:[], icon: HomeModernIcon,
         children: [
-            {href: 'index', active: false, label: 'home-1', children: [], icon: HomeIcon},
-            {href: 'index', active: false, label: 'home-2',
-                children: [
-                    {href: 'index', active: false, label: 'Level-3', children: [], icon: HeartIcon},
-                ],
-                icon: HomeIcon},
+            {href: 'alerts', active: false, label: 'Alert', children: [], ability:[], icon: MegaphoneIcon},
+            {href: 'toast', active: false, label: 'Toast', children: [], ability:[], icon: FlagIcon},
         ]
     },
-    {href: 'index', active: false, label: 'Most recommended', children: [], icon: HeartIcon},
-    {href: 'index', active: false, label: 'Most commented', children: [], icon: ChatBubbleBottomCenterIcon},
+    {href: 'avatar', active: false, label: 'Avatar', children: [], ability:[], icon: PhotoIcon},
+    {href: 'dropdown', active: false, label: 'Dropdown-Menu', children: [], ability:[], icon: Bars4Icon},
+    {href: 'listbox', active: false, label: 'Listbox', children: [], ability:[], icon: ListBulletIcon},
+    {href: 'combobox', active: false, label: 'Combobox', children: [], ability:[], icon: QueueListIcon},
 ]
-const libraryNavigation = [
-    {href: 'index', active: false, label: 'Favorites', children: [], icon: HeartIcon},
-    {href: 'index', active: false, label: 'Watch later', children: [], icon: ClockIcon},
-    {href: 'index', active: false, label: 'History', children: [], icon: ClipboardIcon},
-    {href: 'index', active: false, label: 'Scheduled', children: [], icon: CalendarIcon},
+const formAndTable = [
+    {href: 'form', active: false, label: 'Form', children: [], ability:[], icon: ClipboardDocumentIcon},
+    {href: 'paginate', active: false, label: 'Paginate', children: [], ability:[], icon: Square3Stack3DIcon},
+    {href: 'contacts', active: false, label: 'DataTable', children: [], ability:[], icon: TableCellsIcon},
 ]
 
 const following = [
-    {href: 'https://www.simedicine.org', label: 'Siriraj Medicine', children: [], icon: null, imageUrl: 'https://www.simedicine.org/build/assets/mu_logo.34c4703a.jpg'},
+    {href: 'https://www.simedicine.org', label: 'Siriraj Medicine', children: [], ability:['test'], icon: null, imageUrl: 'https://www.simedicine.org/build/assets/mu_logo.34c4703a.jpg'},
 ]
 
 </script>
@@ -67,15 +62,11 @@ const following = [
 
                         <div class="overflow-y-auto flex-1">
                             <div class="mb-10">
-                                <NavItem
-                                    :item="item"
-                                    v-for="item in firstLevel "
-                                    :key="item.label"
-                                />
                                 <h3 class="px-3 mb-2 text-xs tracking-widest text-gray-400 uppercase">
                                     Main
                                 </h3>
                                 <NavItem
+                                    @close-side-bar.once="(value) => sidebarOpened = value"
                                     :item="item"
                                     v-for="item in mainNavigation "
                                     :key="item.label"
@@ -87,8 +78,9 @@ const following = [
                                     Library
                                 </h3>
                                 <NavItem
+                                    @close-side-bar.once="(value) => sidebarOpened = value"
                                     :item="item"
-                                    v-for="item in libraryNavigation "
+                                    v-for="item in formAndTable "
                                     :key="item.label"
                                 />
 
@@ -97,8 +89,10 @@ const following = [
                                 <h3 class="px-3 mb-2 text-xs tracking-widest text-gray-400 uppercase">
                                     Following
                                 </h3>
-                                <a v-for="(item, index) in following"
-                                   :href="item.href" @click="sidebarOpened = false" :key="index" class="flex items-center px-3 py-2.5 text-gray-500 hover:text-orange-600 group">
+                                <a
+                                    v-for="(item, index) in following"
+                                    v-show="! item.ability.length"
+                                    :href="item.href" @click="sidebarOpened = false" :key="index" class="flex items-center px-3 py-2.5 text-gray-500 hover:text-orange-600 group">
                                     <img :src="item.imageUrl" alt="" class="mr-2 w-7 h-7 rounded-full">
                                     {{ item.label }}
                                 </a>
@@ -127,12 +121,7 @@ const following = [
             </div>
 
             <div class="mb-10">
-                <NavItem
-                    :item="item"
-                    v-for="item in firstLevel "
-                    :key="item.label"
-                />
-                <h3 class="px-3 mb-2 text-xs tracking-widest text-gray-400 uppercase">
+                <h3 class="px-3 mb-2 text-xs tracking-widest font-semibold text-gray-400 uppercase">
                     Main
                 </h3>
                 <NavItem
@@ -144,11 +133,11 @@ const following = [
             </div>
             <div class="mb-10">
                 <h3 class="px-3 mb-2 text-xs tracking-widest text-gray-400 uppercase">
-                    Library
+                    Form and Table
                 </h3>
                 <NavItem
                     :item="item"
-                    v-for="item in libraryNavigation "
+                    v-for="item in formAndTable "
                     :key="item.label"
                 />
 
@@ -158,6 +147,7 @@ const following = [
                     Following
                 </h3>
                 <a v-for="(item, index) in following"
+                   v-show="! item.ability.length"
                    :href="item.href" :key="index" class="flex items-center px-3 py-2.5 font-medium text-sm text-gray-600 hover:text-orange-600 group">
                     <img :src="item.imageUrl" alt="" class="mr-2 w-7 h-7 rounded-full">
                     {{ item.label }}
@@ -219,7 +209,7 @@ const following = [
                 </div>
             </div>
 
-            <main>Main content</main>
+            <slot></slot>
         </nav>
     </div>
 </template>

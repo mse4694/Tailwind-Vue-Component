@@ -1,8 +1,16 @@
+<script>
+import AppLayout from "@/Layouts/AppLayout.vue"
+export default {
+    layout: AppLayout,
+}
+</script>
+
 <script setup>
 import { ref } from "vue";
+import { useForm } from "@inertiajs/vue3";
 import BaseListbox from '../Components/BaseListbox.vue';
-import Button from '../Components/Button.vue'
-import { ArrowPathIcon } from "@heroicons/vue/20/solid";
+// import Button from '../Components/Button.vue'
+// import { ArrowPathIcon } from "@heroicons/vue/20/solid";
 
 const people = [
     { value: 1, label: 'Durward Reynolds' },
@@ -26,50 +34,52 @@ const roles = [
     { value: 3, label: 'Support' },
 ]
 
-const form = ref({
+const form = useForm({
     person_id: null,
     person_with_status_id: null,
     role_ids: []
 })
-  
+
 </script>
 
 <template>
     <div class="p-4 mx-auto max-w-2xl">
-        <form 
-            action="#" 
+        <form
+            action="#"
             class="flex flex-col space-y-6"
         >
             <BaseListbox
-                placeholder="Select person" 
+                placeholder="Select person"
                 v-model="form.person_id"
-                :options="people" 
+                :options="people"
             />
 
             <BaseListbox
-                placeholder="Select person and Disable" 
+                placeholder="Select person and Disable"
                 v-model="form.person_with_status_id"
                 :options="people_with_status"
             />
-            
+
             <BaseListbox
-                placeholder="Select multiple roles" 
+                placeholder="Select multiple roles"
                 v-model="form.role_ids"
                 :options="roles"
                 :multiple="true"
-                error="Roles is a required field" 
+                error="Roles is a required field"
             />
 
         </form>
     </div>
-    <div class="flex">
-        <Button
-            as="a"
-            intent="text" 
-            :href="route('welcome')"
-            :left-icon="ArrowPathIcon"
-            :right-icon="ArrowPathIcon"
-            class="w-full"
-        >Return to Welcome Page</Button>
-    </div>
+
+    {{ form.data() }}
+<!--    <div class="flex">-->
+<!--        <Button-->
+<!--            as="a"-->
+<!--            intent="text" -->
+<!--            :href="route('index')"-->
+<!--            :left-icon="ArrowPathIcon"-->
+<!--            :right-icon="ArrowPathIcon"-->
+<!--            class="w-full"-->
+<!--        >Return to Welcome Page</Button>-->
+<!--    </div>-->
 </template>

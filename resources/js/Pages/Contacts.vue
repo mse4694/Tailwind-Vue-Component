@@ -1,11 +1,18 @@
+<script>
+import AppLayout from "@/Layouts/AppLayout.vue"
+export default {
+    layout: AppLayout,
+}
+</script>
+
 <script setup>
 import { reactive, ref, watch } from "vue";
 import { router } from '@inertiajs/vue3';
 import {throttle, pickBy} from 'lodash';
 import Pagination from '../Components/Pagination.vue';
-import Button from '../Components/Button.vue';
 import Avatar from '../Components/Avatar.vue';
-import { ArrowPathIcon, BarsArrowUpIcon, BarsArrowDownIcon, ArrowsUpDownIcon } from "@heroicons/vue/20/solid";
+// import Button from '../Components/Button.vue';
+import { ArrowPathIcon, BarsArrowUpIcon, BarsArrowDownIcon } from "@heroicons/vue/20/solid";
 
 const props = defineProps({
     contacts: { type: Object, required: true },
@@ -33,7 +40,7 @@ console.log(params)
 //             preserveState: true,
 //             replace: true
 //         })
-//     }, 1500)  
+//     }, 1500)
 // })
 
 watch(params,
@@ -57,7 +64,7 @@ const sort = (val) => {
 </script>
 
 <template>
-    
+
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-5">
     <div class="pb-4 bg-white dark:bg-gray-900">
         <label for="table-search" class="sr-only">Search</label>
@@ -104,7 +111,7 @@ const sort = (val) => {
             </tr>
         </thead>
         <tbody>
-            <tr 
+            <tr
                 v-for="contact in props.contacts.data" :key="contact.id"
                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
             >
@@ -112,8 +119,8 @@ const sort = (val) => {
                     <Avatar
                         class="m-1"
                         shape="circle"
-                        size="sm" 
-                        :name="contact.email" 
+                        size="sm"
+                        :name="contact.email"
                     />
                 </th>
                 <td class="px-6 py-4">
@@ -137,15 +144,15 @@ const sort = (val) => {
     <Pagination :pagination="contacts" />
 </div>
 
-<div class="flex">
-    <Button
-        as="a"
-        intent="text" 
-        :href="route('welcome')"
-        :left-icon="ArrowPathIcon"
-        :right-icon="ArrowPathIcon"
-        class="w-full"
-    >Return to Welcome Page</Button>
-</div>
+<!--<div class="flex">-->
+<!--    <Button-->
+<!--        as="a"-->
+<!--        intent="text" -->
+<!--        :href="route('index')"-->
+<!--        :left-icon="ArrowPathIcon"-->
+<!--        :right-icon="ArrowPathIcon"-->
+<!--        class="w-full"-->
+<!--    >Return to Welcome Page</Button>-->
+<!--</div>-->
 
 </template>

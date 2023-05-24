@@ -1,20 +1,24 @@
-<script setup>
+<script>
+import AppLayout from "@/Layouts/AppLayout.vue"
+export default {
+    layout: AppLayout,
+}
+</script>
 
+<script setup>
 import { ref } from "vue";
-import Button from '../Components/Button.vue'
-import { ArrowPathIcon, EyeIcon, EyeSlashIcon } from "@heroicons/vue/20/solid";
-import BaseLabel from '../Components/BaseLabel.vue'
-import ErrorMessage from '../Components/ErrorMessage.vue'
+import { useForm } from "@inertiajs/vue3";
+// import Button from '../Components/Button.vue'
+import { EyeIcon, EyeSlashIcon } from "@heroicons/vue/20/solid";
 import Field from '../Components/Field.vue'
 import BaseInput from '../Components/BaseInput.vue'
 import BaseCheckbox from '../Components/BaseCheckbox.vue'
 import BaseRadioGroup from '../Components/Radio/BaseRadioGroup.vue'
 import BaseTextarea from '../Components/BaseTextarea.vue'
-import HelperMessage from '../Components/HelperMessage.vue'
 import BaseToggle from '../Components/BaseToggle.vue'
 
 
-const form = ref({
+const form = useForm({
     name: null,
     lastname: null,
     title: null,
@@ -335,20 +339,20 @@ const errors = ref({
                 </Field>
             </div>
 
-            <div>{{ form }}</div>
+            <div>{{ form.data() }}</div>
 
         </div>
 
-        <div class="flex">
-            <Button
-                as="a"
-                intent="text"
-                :href="route('welcome')"
-                :left-icon="ArrowPathIcon"
-                :right-icon="ArrowPathIcon"
-                class="w-full"
-            >Return to Welcome Page</Button>
-        </div>
+<!--        <div class="flex">-->
+<!--            <Button-->
+<!--                as="a"-->
+<!--                intent="text"-->
+<!--                :href="route('index')"-->
+<!--                :left-icon="ArrowPathIcon"-->
+<!--                :right-icon="ArrowPathIcon"-->
+<!--                class="w-full"-->
+<!--            >Return to Welcome Page</Button>-->
+<!--        </div>-->
     </div>
 
 

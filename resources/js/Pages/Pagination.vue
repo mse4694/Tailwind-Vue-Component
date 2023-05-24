@@ -1,9 +1,16 @@
+<script>
+import AppLayout from "@/Layouts/AppLayout.vue"
+export default {
+    layout: AppLayout,
+}
+</script>
+
 <script setup>
 import { ref } from "vue";
 import Pagination from '../Components/Pagination.vue';
-import Button from '../Components/Button.vue'
 import Avatar from '../Components/Avatar.vue';
-import { ArrowPathIcon } from "@heroicons/vue/20/solid";
+// import Button from '../Components/Button.vue'
+// import { ArrowPathIcon } from "@heroicons/vue/20/solid";
 
 const props = defineProps({
     users: { type: Object, required: true },
@@ -27,8 +34,8 @@ const props = defineProps({
                         <Avatar
                             class="m-1"
                             shape="circle"
-                            size="sm" 
-                            :name="user.email" 
+                            size="sm"
+                            :name="user.email"
                         />
                     </td>
                     <td class="border border-slate-300 ...">{{ user.name }}</td>
@@ -37,19 +44,19 @@ const props = defineProps({
             </tbody>
         </table>
     </div>
-    
+
     <div class="flex justify-center">
         <Pagination :pagination="users" />
     </div>
 
-    <div class="flex">
-        <Button
-            as="a"
-            intent="text" 
-            :href="route('welcome')"
-            :left-icon="ArrowPathIcon"
-            :right-icon="ArrowPathIcon"
-            class="w-full"
-        >Return to Welcome Page</Button>
-    </div>
+<!--    <div class="flex">-->
+<!--        <Button-->
+<!--            as="a"-->
+<!--            intent="text" -->
+<!--            :href="route('index')"-->
+<!--            :left-icon="ArrowPathIcon"-->
+<!--            :right-icon="ArrowPathIcon"-->
+<!--            class="w-full"-->
+<!--        >Return to Welcome Page</Button>-->
+<!--    </div>-->
 </template>
