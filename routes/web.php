@@ -87,7 +87,7 @@ Route::get('/combobox', function () {
 })->name('combobox');
 
 Route::get('/slide-over', function () {
-    return Inertia::render('SidebarSlideOver', [
+    return Inertia::render('SlideOver', [
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);

@@ -6,7 +6,7 @@ import DropdownItem from '../Components/Dropdown/DropdownItem.vue'
 import Avatar from '../Components/Avatar.vue';
 import {Dialog, DialogOverlay, TransitionChild, TransitionRoot} from '@headlessui/vue';
 import {MagnifyingGlassIcon, XMarkIcon} from '@heroicons/vue/20/solid';
-import { RectangleGroupIcon, MegaphoneIcon, FlagIcon, HomeModernIcon, ListBulletIcon, PhotoIcon, Bars4Icon, QueueListIcon, ClipboardDocumentIcon, TableCellsIcon, Square3Stack3DIcon } from '@heroicons/vue/24/outline'
+import { RectangleGroupIcon, MegaphoneIcon, FlagIcon, HomeModernIcon, ListBulletIcon, PhotoIcon, Bars4Icon, QueueListIcon, ClipboardDocumentIcon, TableCellsIcon, Square3Stack3DIcon, PlayIcon } from '@heroicons/vue/24/outline'
 import NavItem from "../Components/NavItem.vue";
 
 const sidebarOpened = ref(false)
@@ -22,6 +22,7 @@ const mainNavigation = [
     {href: 'dropdown', active: false, label: 'Dropdown-Menu', children: [], ability:[], icon: Bars4Icon},
     {href: 'listbox', active: false, label: 'Listbox', children: [], ability:[], icon: ListBulletIcon},
     {href: 'combobox', active: false, label: 'Combobox', children: [], ability:[], icon: QueueListIcon},
+    {href: 'slide-over', active: false, label: 'Slide-Over', children: [], ability:[], icon: PlayIcon},
 ]
 const formAndTable = [
     {href: 'form', active: false, label: 'Form', children: [], ability:[], icon: ClipboardDocumentIcon},
