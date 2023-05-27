@@ -32,6 +32,7 @@ const formAndTable = [
 
 const following = [
     {href: 'https://www.simedicine.org', label: 'Siriraj Medicine', children: [], ability:['test'], icon: null, imageUrl: 'https://www.simedicine.org/build/assets/mu_logo.34c4703a.jpg'},
+    {href: 'https://www.simedicine.org', label: 'Index page', children: [], ability:[], icon: null, imageUrl: 'https://www.simedicine.org/build/assets/mu_logo.34c4703a.jpg'},
 ]
 
 </script>
@@ -56,7 +57,7 @@ const following = [
                             <XMarkIcon class="w-5 h-5"/>
                         </button>
                         <div class="px-3 pt-8 pb-4">
-                            <a href="#">
+                            <a :href="route('index')">
                                 <div class="w-48 h-9">Application LOGO</div>
                             </a>
                         </div>
@@ -64,7 +65,7 @@ const following = [
                         <div class="overflow-y-auto flex-1">
                             <div class="mb-10">
                                 <h3 class="px-3 mb-2 text-xs tracking-widest text-gray-400 uppercase">
-                                    Main
+                                    Utility
                                 </h3>
                                 <NavItem
                                     @close-side-bar.once="(value) => sidebarOpened = value"
@@ -116,14 +117,14 @@ const following = [
 
         <nav class="hidden w-64 bg-gray-50 border-r border-gray-200 lg:block mt-2 px-2">
             <div class="py-4 px-3">
-                <a href="/">
+                <a :href="route('index')">
                     <div class="w-48 h-9">Application LOGO</div>
                 </a>
             </div>
 
             <div class="mb-10">
                 <h3 class="px-3 mb-2 text-xs tracking-widest font-semibold text-gray-400 uppercase">
-                    Main
+                    Utility
                 </h3>
                 <NavItem
                     :item="item"

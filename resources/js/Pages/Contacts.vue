@@ -12,7 +12,7 @@ import {throttle, pickBy} from 'lodash';
 import Pagination from '../Components/Pagination.vue';
 import Avatar from '../Components/Avatar.vue';
 // import Button from '../Components/Button.vue';
-import { ArrowPathIcon, BarsArrowUpIcon, BarsArrowDownIcon } from "@heroicons/vue/20/solid";
+import { ChevronUpDownIcon, ChevronUpIcon, ChevronDownIcon, BarsArrowUpIcon, BarsArrowDownIcon } from "@heroicons/vue/20/solid";
 
 const props = defineProps({
     contacts: { type: Object, required: true },
@@ -84,24 +84,27 @@ const sort = (val) => {
                 <th scope="col" class="">
                     <span @click="sort('id')" class="inline-flex w-full justify-between cursor-pointer px-6 py-3">
                             #
-                            <BarsArrowUpIcon v-if="params.field === 'id' && params.direction === 'asc'" class="w-6 h-6 p-1" />
-                            <BarsArrowDownIcon v-if="params.field === 'id' && params.direction === 'desc'" class="w-6 h-6 p-1"  />
+                            <ChevronUpDownIcon v-if="params.field !== 'id'" class="w-6 h-6 p-1"/>
+                            <ChevronUpIcon v-if="params.field === 'id' && params.direction === 'asc'" class="w-6 h-6 p-1" />
+                            <ChevronDownIcon v-if="params.field === 'id' && params.direction === 'desc'" class="w-6 h-6 p-1"  />
                             <!-- <ArrowsUpDownIcon v-if="field !== 'id'" class="w-6 h-6 p-1" /> -->
                     </span>
                 </th>
                 <th scope="col" class="">
                     <span @click="sort('name')" class="inline-flex w-full justify-between cursor-pointer px-6 py-3">
                             Name
-                            <BarsArrowUpIcon v-if="params.field === 'name' && params.direction === 'asc'" class="w-6 h-6 p-1" />
-                            <BarsArrowDownIcon v-if="params.field === 'name' && params.direction === 'desc'" class="w-6 h-6 p-1"  />
+                            <ChevronUpDownIcon v-if="params.field !== 'name'" class="w-6 h-6 p-1"/>
+                            <ChevronUpIcon v-if="params.field === 'name' && params.direction === 'asc'" class="w-6 h-6 p-1" />
+                            <ChevronDownIcon v-if="params.field === 'name' && params.direction === 'desc'" class="w-6 h-6 p-1"  />
                             <!-- <ArrowsUpDownIcon v-if="field !== 'name'" class="w-6 h-6 p-1" /> -->
                     </span>
                 </th>
                 <th scope="col" class="">
                     <span @click="sort('email')" class="inline-flex w-full justify-between cursor-pointer px-6 py-3">
                             Email
-                            <BarsArrowUpIcon v-if="params.field === 'email' && params.direction === 'asc'" class="w-6 h-6 p-1" />
-                            <BarsArrowDownIcon v-if="params.field === 'email' && params.direction === 'desc'" class="w-6 h-6 p-1"  />
+                            <ChevronUpDownIcon v-if="params.field !== 'email'" class="w-6 h-6 p-1"/>
+                            <ChevronUpIcon v-if="params.field === 'email' && params.direction === 'asc'" class="w-6 h-6 p-1" />
+                            <ChevronDownIcon v-if="params.field === 'email' && params.direction === 'desc'" class="w-6 h-6 p-1"  />
                             <!-- <ArrowsUpDownIcon v-if="field !== 'email'" class="w-6 h-6 p-1" /> -->
                     </span>
                 </th>

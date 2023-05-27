@@ -73,7 +73,7 @@ const following = [
                                     :key="item.label"
                                 />
                                 <h3 class="px-3 mb-2 text-xs tracking-widest text-gray-400 uppercase">
-                                    Main
+                                    Utility
                                 </h3>
                                 <NavItem
                                     :item="item"
@@ -133,7 +133,7 @@ const following = [
                     :key="item.label"
                 />
                 <h3 class="px-3 mb-2 text-xs tracking-widest text-gray-400 uppercase">
-                    Main
+                    Utility
                 </h3>
                 <NavItem
                     :item="item"
