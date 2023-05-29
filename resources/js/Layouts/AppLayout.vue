@@ -40,6 +40,7 @@ const following = [
 <template>
     <div class="flex min-h-screen">
         <TransitionRoot :show="sidebarOpened">
+            <!-- ส่วนที่ 1 จะแสดง side menu ตอนกดปุ่ม แฮมเบอร์เกอร์ menu       -->
             <Dialog as="div" @close="sidebarOpened = false" class="fixed inset-0 z-40 lg:hidden">
                 <TransitionChild
                     enter="transition ease-in-out duration-200 transform"
@@ -115,6 +116,7 @@ const following = [
             </Dialog>
         </TransitionRoot>
 
+        <!-- จะแสดง side menu ตอนหน้าจอขนาด lg       -->
         <nav class="hidden w-64 bg-gray-50 border-r border-gray-200 lg:block mt-2 px-2">
             <div class="py-4 px-3">
                 <a :href="route('index')">
@@ -157,6 +159,7 @@ const following = [
             </div>
         </nav>
 
+        <!-- จะไม่แสดง side menu ตอนหน้าจอขนาดเล็กกว่า lg จะมีแค่ปุมให้กดเพื่อเปิด menu และเมื่อเปิด menu จะทำให้ส่วนที่ 1 แสดงผล       -->
         <nav class="flex-1">
             <div class="flex justify-between py-3 px-3 md:px-6 space-x-3 md:space-x-6 bg-gray-50 border-b">
                 <div class="flex items-center flex-1">
@@ -211,6 +214,7 @@ const following = [
                 </div>
             </div>
 
+            <!-- ส่วนแสดง content ที่ต้องการ            -->
             <slot></slot>
         </nav>
     </div>

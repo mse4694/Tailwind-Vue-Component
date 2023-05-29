@@ -6,9 +6,14 @@ export default {
 </script>
 
 <script setup>
+import { ref } from 'vue'
+import Button from '../Components/Button.vue'
 import SlideOver from '@/Components/SlideOver.vue'
+
 </script>
 
 <template>
-    <SlideOver></SlideOver>
+<!--    <Button intent="primary" @click="slideSide = 'right'">Slide right</Button>-->
+<!--    <Button intent="primary" @click="slideSide = 'left'">Slide left</Button>-->
+    <SlideOver side="right"></SlideOver>
 </template>
