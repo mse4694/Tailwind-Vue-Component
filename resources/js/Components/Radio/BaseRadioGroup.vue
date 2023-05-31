@@ -21,7 +21,7 @@ const props = defineProps({
     },
     radioType: {
         type: String,
-        validator:(value) => ["base", "inline", "horizontal"].includes(value),
+        validator:(value) => ["base", "base-with-border", "inline", "horizontal"].includes(value),
         default: 'base'
     },
     disabled: {
@@ -44,7 +44,7 @@ const updateInput = ($event) => {
 
 const radioBoxClass = computed(() => {
     return cva(
-        "w-4 h-4 text-blue-600 border-gray-400 rounded-full focus:ring-0 cursor-pointer", 
+        "w-4 h-4 text-blue-600 border-gray-400 rounded-full focus:ring-0 cursor-pointer",
         {
             variants: {
                 disabled: {
@@ -70,17 +70,17 @@ const radioBoxClass = computed(() => {
                 :label="option.label"
                 :value="option.value"
                 :name="name"
-                :id="option.label"    
+                :id="option.label"
                 :model-value="props.modelValue"
                 @update:modelValue="updateInput"
                 :radioBoxClass="radioBoxClass"
                 :disabled="props.disabled"
-                :radioType="props.radioType" 
+                :radioType="props.radioType"
             />
         </div>
     </div>
 
-    <div v-if="props.radioType === 'base'" 
+    <div v-if="props.radioType === 'base'"
         v-for="(option, index) in options"
         class="flex items-center mb-2"
     >
@@ -89,17 +89,38 @@ const radioBoxClass = computed(() => {
             :label="option.label"
             :value="option.value"
             :name="name"
-            :id="option.label"    
+            :id="option.label"
             :model-value="props.modelValue"
             @update:modelValue="updateInput"
             :radioBoxClass="radioBoxClass"
             :disabled="props.disabled"
-            :radioType="props.radioType" 
+            :radioType="props.radioType"
         />
     </div>
 
+    <ul v-if="props.radioType === 'base-with-border'" class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg">
+        <li
+            v-for="(option, index) in options"
+            class="w-full border-b border-gray-200 pt-2 pb-2">
+            <div class="flex items-center pl-3">
+                <BaseRadio
+                    :key="index"
+                    :label="option.label"
+                    :value="option.value"
+                    :name="name"
+                    :id="option.label"
+                    :model-value="props.modelValue"
+                    @update:modelValue="updateInput"
+                    :radioBoxClass="radioBoxClass"
+                    :disabled="props.disabled"
+                    :radioType="props.radioType"
+                />
+            </div>
+        </li>
+    </ul>
+
     <ul v-if="props.radioType === 'horizontal'" class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex">
-        <li 
+        <li
             v-for="(option, index) in options"
             class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r">
             <div class="flex items-center pl-3">
@@ -108,12 +129,12 @@ const radioBoxClass = computed(() => {
                     :label="option.label"
                     :value="option.value"
                     :name="name"
-                    :id="option.label"    
+                    :id="option.label"
                     :model-value="props.modelValue"
                     @update:modelValue="updateInput"
                     :radioBoxClass="radioBoxClass"
                     :disabled="props.disabled"
-                    :radioType="props.radioType"  
+                    :radioType="props.radioType"
                 />
             </div>
         </li>
